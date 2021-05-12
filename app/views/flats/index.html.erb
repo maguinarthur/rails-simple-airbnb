@@ -1,0 +1,28 @@
+<h1 style = "margin-top: 16px"><strong>All our flats</strong></h1>
+<h5>All <%= @flats.size %> flats.</h5>
+
+<% @flats.each do |flat| %>
+
+<div class="flat-card">
+  <%# <img src="https://source.unsplash.com/random  " alt="Flat image"> %>
+  <div class="flat-content">
+    <h3><strong><%= flat.name %></strong></h3>
+    <p><%= flat.address %></p>
+    <div class="flat-content-other-infos">
+      <i class="fas fa-user-friends"></i>
+      <span><%= flat.number_of_guests %>   </span>
+      <i class="fas fa-euro-sign"></i>
+      <span> <%= flat.price_per_night %>   </span>
+    </div>
+  </div>
+  <hr>
+  <div class="flat-links">
+    <%= link_to 'More info', flat_path(flat), class: "btn btn-outline-primary"%>
+    <%= link_to 'Edit', edit_flat_path(flat), class: "btn btn-outline-warning" %>
+    <%= link_to 'Remove', flat_path(flat), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+  </div>
+</div>
+
+<% end %>
+
+
